@@ -1,6 +1,10 @@
 # Team name
+Los Suecos 
 
 ## Team members
+Fletcher
+Elias
+Zuhat
 
 ## Work Diary
 
