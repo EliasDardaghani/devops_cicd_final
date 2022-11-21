@@ -9,5 +9,8 @@ Los Suecos
 ## Work Diary
 
 ### Day 1
-
-### Day 3
+- Initial setup of git repository
+  - Invite team members
+  - Pushing application
+ 
+### Day 2
