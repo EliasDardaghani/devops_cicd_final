@@ -2,9 +2,9 @@
 Los Suecos 
 
 ## Team members
-Fletcher
-Elias
-Zuhat
+- Fletcher
+- Elias
+- Zuhat
 
 ## Work Diary
 
