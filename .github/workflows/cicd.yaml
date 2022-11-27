@@ -42,6 +42,10 @@ jobs:
           registry: ghcr.io
           username: EliasDardaghani
           password: ${{ secrets.PASS }}
+      - name: Get sha
+        id: sha
+        run: |
+          echo "short_sha=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
 
       - name: Extract Docker metadata
         id: meta
@@ -55,7 +59,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}-${{steps.sha.outputs.short_sha }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
