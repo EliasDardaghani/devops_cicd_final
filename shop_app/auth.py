@@ -1,10 +1,19 @@
 import functools
+
 from flask import (
-    Blueprint, render_template, request, flash, redirect, url_for, session, g
+    Blueprint,
+    flash,
+    g,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
 )
-from werkzeug.security import check_password_hash, generate_password_hash
-from shop_app.db import get_db
 from mysql.connector.errors import InterfaceError
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from shop_app.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
