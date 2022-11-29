@@ -5,7 +5,7 @@ metadata:
   labels:
     app: flask-final
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: flask-final
@@ -20,14 +20,14 @@ spec:
       terminationGracePeriodSeconds: 1
       containers:
       - name: flask-image
-        image: ghcr.io/eliasdardaghani/devops_cicd_final:feature-latest
+        image: ghcr.io/eliasdardaghani/devops21_cicd_final/shopapp:latest
         ports:
         - containerPort: 5000
         imagePullPolicy: Always
 
         env:
         - name: MYSQL_HOST
-          value: mysql.final.svc.cluster.local
+          value: mysql.loco.svc.cluster.local
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
