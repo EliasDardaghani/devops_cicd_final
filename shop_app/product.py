@@ -37,3 +37,8 @@ def create_product():
             database.commit()
             return jsonify({"status": "ok"})
     return jsonify({"error": "Failed to parse json"}), 400
+
+
+@bp.route("/error")
+def fail_product():
+    return jsonify("error")
