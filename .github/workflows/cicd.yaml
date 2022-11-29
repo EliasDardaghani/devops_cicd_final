@@ -2,9 +2,6 @@ name: My Python project
 
 on:
   push:
-    branches:
-      - feature
-  pull_request:
 
 env:
   # Use docker.io for Docker Hub if empty
