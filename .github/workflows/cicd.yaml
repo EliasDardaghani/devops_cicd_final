@@ -51,8 +51,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: EliasDardaghani
-          password: ${{ secrets.PASS }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Set docker tags
         id: tags
         run: |
