@@ -14,7 +14,6 @@ env:
 
 jobs:
   Build:
-    if: github.ref == 'refs/heads/feature'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -54,16 +53,17 @@ jobs:
           registry: ghcr.io
           username: EliasDardaghani
           password: ${{ secrets.PASS }}
-      - name: Get sha
-        id: sha
+      - name: Set docker tags
+        id: tags
         run: |
-          echo "short_sha=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
-
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          if [[ "${{ github.ref_name }}" != 'main' ]]
+          then
+            sha=$(git rev-parse --short ${{ github.sha }})
+            branch=$(${{ github.ref_name }})
+            echo "::set-output name=tag::$branch-$sha"
+          else
+            echo "::set-output name=tag::latest"
+          fi
 
       - name: Build and push Docker image
         id: build-and-push
@@ -71,7 +71,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}-${{steps.sha.outputs.short_sha }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.tags.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
