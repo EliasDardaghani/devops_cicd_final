@@ -2,6 +2,9 @@ name: My Python project
 
 on:
   push:
+    branches:
+      - feature
+  pull_request:
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -11,6 +14,7 @@ env:
 
 jobs:
   Build:
+    if: github.ref == 'refs/heads/feature'
     runs-on: ubuntu-latest
     strategy:
       matrix:
