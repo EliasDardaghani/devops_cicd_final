@@ -59,7 +59,7 @@ jobs:
           if [[ "${{ github.ref_name }}" != 'main' ]]
           then
             sha=$(git rev-parse --short ${{ github.sha }})
-            branch=$(${{ github.ref_name }})
+            branch=${{ github.ref_name }}
             echo "::set-output name=tag::$branch-$sha"
           else
             echo "::set-output name=tag::latest"
