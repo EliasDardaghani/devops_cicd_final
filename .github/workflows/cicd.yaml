@@ -71,6 +71,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/EliasDardaghani/devops21_cicd_final/shopapp:${{ steps.tags.outputs.tag }}
+          tags: ghcr.io/eliasdardaghani/devops21_cicd_final/shopapp:${{ steps.tags.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
