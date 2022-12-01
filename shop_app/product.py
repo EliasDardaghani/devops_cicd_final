@@ -41,4 +41,4 @@ def create_product():
 
 @bp.route("/error")
 def fail_product():
-    return jsonify("error")
+    return jsonify("errorere")
